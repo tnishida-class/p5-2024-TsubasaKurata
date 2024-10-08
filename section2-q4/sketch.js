@@ -1,21 +1,21 @@
-// ギリシャ国旗
+// EU国旗
 function setup() {
-  const blue = color(0, 51, 160);
+  const blue = color(0, 51, 153);
+  const gold = color(255, 204, 0);
   createCanvas(270, 180);
   // noStroke();
-  background(255);
+  background(0,51,153);
 
-  let d = height / 9; // 縞1本の太さ
-
-  for(let i = 0; i < 9; i++){
-    // BLANK[1] (hint: 縞の色を交互に変えるには2で割った余りを使おう)
-    rect(0, i * d, width, (i + 1) * d);
-  }
-
-  fill(blue);
-  let size = d * 5;
-  rect(0, 0, size, size);
-
-  fill(255);
-  // BLANK[2] (hint: 白い十字を描くには rect を二つ描こう)
+// キャンバスの中心を (middle_x, middle_y)と定義
+  const middle_x = width / 2; 
+  const middle_y = height / 2;
+  
+//12回座標を指定する
+  for(let i = 0; i < 12; i++){
+    let star_x = Math.cos(Math.PI/6 * i) * 60 + middle_x;
+    let star_y = Math.sin(Math.PI/6 * i) * 60 + middle_y;
+    fill( gold );
+    ellipse( star_x , star_y ,17,17);
+ }
+  
 }
