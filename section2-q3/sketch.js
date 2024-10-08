@@ -7,25 +7,37 @@ function setup() {
   const cream = color(242, 212, 147);
   createCanvas(400, 400);
   background(255);
-  stroke(255);
-  strokeWeight(3);
+  stroke(255);//線や輪郭線の色を白にする
+  strokeWeight(3);//線や輪郭線の幅を３にする
 
-  const cx = width / 2; // 中心は (cx, cy)
+  const cx = width / 2; // キャンバスの中心を (cx, cy)と定義
   const cy = height / 2;
   const maxR = min(width, height); // 大きさは幅と高さのうち小さい方
 
-  drawCircle(black, maxR);
-  drawArcs(green, red, maxR * 0.8);
+  drawCircle(black, maxR);//キャンバスいっぱいの大きさの黒い円を描く
+  drawArcs(green, red, maxR * 0.8);//キャンバスの大きさの内８割の大きさの
   // BLANK[1] (hint: drawArcs x 3, drawCircle x 1)
+  drawArcs(cream,black, maxR * 0.75);
+  drawArcs(green, red, maxR * 0.5);
+  drawArcs(cream,black, maxR * 0.45);
+  drawCircle(green, maxR * 0.1);
   drawCircle(red, maxR * 0.05);
 }
 
 function drawCircle(c, r){
+  
+  const cx = width / 2; // 中心は (cx, cy)
+  const cy = height / 2;
+  
   fill(c);
-  ellipse(cx, cy, r, r);
+  ellipse(cx,cy, r, r);
 }
 
 function drawArcs(c1, c2, r) {
+  
+  const cx = width / 2; // 中心は (cx, cy)
+  const cy = height / 2;
+  
   for (let i = 0; i < 20; i++) {
     let start = TWO_PI / 20 * i;
     let stop = TWO_PI / 20 * (i + 1);
