@@ -1,32 +1,41 @@
 // テキスト「キーボード操作に反応する」
-let x, y;
+let x, y , vx, vy;
+const g = 1; // 重力
+const vyMax = 20;
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
   x = width / 2;
-  y = height / 2;
+  y = height *14/21;
 }
 
 function draw(){
-  background(160, 192, 255);
+  background(150,190,255);
+  fill(255,50,60)//ボールの色
+  noStroke()
   ellipse(x, y, 50);
-  if(keyIsDown(LEFT_ARROW)){ x -= 5; }
-  if(keyIsDown(RIGHT_ARROW)){ x += 5; }
-  if(keyIsDown(UP_ARROW)){ y -= 5; }
-  if(keyIsDown(DOWN_ARROW)){ y += 5; }
-  if(keyIsDown("A".charCodeAt(0))){ x+= 10; }
-  if(keyIsDown(" ".charCodeAt(0))){ x-= 10; }
-}
+  
+  if(keyIsDown(SHIFT)){ speed = highspeed; }
+  if(keyIsDown("A".charCodeAt(0))){ x -= speed; }
+  if(keyIsDown("D".charCodeAt(0))){ x += speed; }
+  if(keyIsDown(" ".charCodeAt(0))){ y -= 10; }
+  
+  fill(100,200,50)//地面の色
+  strokeWeight(3)
+  stroke(100,200,50)
+  
+  rect(0,windowHeight*7/10,windowWidth, windowHeight*3/10)
+  speed = 5
+  highspeed = 15
+ 
 
-// イベントハンドラを使用するパターン
+//イベントハンドラを使用するパターン
 // function keyPressed(){
-//   if(keyCode == LEFT_ARROW){ x -= 5; }
-//   else if(keyCode == RIGHT_ARROW){ x+= 5; }
-//   else if(keyCode == DOWN_ARROW){ y += 5; }
-//   else if(keyCode == UP_ARROW){ y -= 5; }
-//   else if(key == "A"){ x += 10; }
-// }
-
-function windowResized(){
-  resizeCanvas(windowWidth, windowHeight);
+//   speed = 5
+//   highspeed = 15
+//   if(keyCode == SHIFT){ speed = highspeed; }
+//   if(keyCode == "A"){ x -= speed; }
+//   else if(keyCode == "D"){ x+= speed; }
+//else if(key == " "){ x += 10; }
 }
+
